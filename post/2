@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<!--[if IE 7]>
+<html class="ie ie7" lang="zh-CN">
+<![endif]-->
+<!--[if IE 8]>
+<html class="ie ie8" lang="zh-CN">
+<![endif]-->
+<!--[if !(IE 7) | !(IE 8)  ]><!-->
+<html lang="zh-CN">
+<!--<![endif]-->
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Lara系统安装 - Lara博客 - 张仿松个人博客</title>
+	<meta name="keywords" content="博客,个人博客,张仿松个人博客,PHP,Laravel,Lara博客"/>
+	<meta name="description" content="张仿松个人博客是一个关注PHP技术的个人博客，提供一个互联网从业者的学习成果和工作经验总结。" />
+	<link rel="stylesheet" id="twentytwelve-style-css" href="../front/css/index.css" type="text/css" media="all" />
+	<!--[if lt IE 9]>
+	<link rel="stylesheet" id="twentytwelve-ie-css"  href="http://www.zfsphp.com/front/css/ie.css" type="text/css" media="all" />
+	<![endif]-->
+	<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>
+	<style type="text/css" id="custom-background-css">
+		body.custom-background {background-color: #e6e6e6; }
+	</style>
+
+	<!--[if lt IE 9]>
+	<script src="http://www.zfsphp.com/front/js/html5.js" type="text/javascript"></script>
+	<![endif]-->
+	<script type="text/javascript" src="../front/js/jquery.js"></script>
+	<script type="text/javascript" src="../front/js/nav.js"></script>
+</head>
+
+<body class="home blog custom-background custom-font-enabled single-author">
+
+<div id="page" class="hfeed site">
+
+	<header id="masthead" class="site-header" role="banner">
+		<hgroup>
+			<h1 class="site-title">
+				<a href="../index.html" title="张仿松个人博客" rel="home">张仿松个人博客</a>
+							</h1>
+			<h2 class="site-description">张仿松个人博客是一个关注PHP技术的个人博客，提供一个互联网从业者的学习成果和工作经验总结。</h2>
+		</hgroup>
+
+		<nav id="site-navigation" class="main-navigation" role="navigation">
+			<ul class="nav-menu">
+				<li><a href="../index.html">首页</a></li>
+								<li><a href="../cate/1">服务器</a>
+					<ul class="sub-menu">
+											</ul>
+				</li>
+								<li><a href="../cate/2">PHP语言</a>
+					<ul class="sub-menu">
+											</ul>
+				</li>
+								<li><a href="../cate/3">数据库</a>
+					<ul class="sub-menu">
+											</ul>
+				</li>
+								<li><a href="../cate/4">Linux</a>
+					<ul class="sub-menu">
+											</ul>
+				</li>
+								<li><a href="../cate/5">Javascript</a>
+					<ul class="sub-menu">
+											</ul>
+				</li>
+								<li><a href="../cate/6">Html5 &amp; Css3</a>
+					<ul class="sub-menu">
+											</ul>
+				</li>
+								<li><a href="../cate/7">Lara博客</a>
+					<ul class="sub-menu">
+											</ul>
+				</li>
+								<li><a href="../cate/8">航拍摄影</a>
+					<ul class="sub-menu">
+											</ul>
+				</li>
+							</ul>
+		</nav>
+	</header>
+
+	<div id="main" class="wrapper">
+		<div id="primary" class="site-content">
+			<div id="content" role="main">
+					<article>
+		<header class="entry-header">
+			<h1 class="entry-title"><a href="2" title="Lara系统安装" rel="bookmark">Lara系统安装</a></h1>
+		</header>
+
+		<div class="entry-content ql-editor"><p>1. 下载源码</p><p>在命令行界面输入&nbsp;<code style="color: rgb(255, 255, 255); background-color: rgb(238, 238, 238);">git clone&nbsp;</code><code style="color: rgb(66, 152, 186); background-color: rgb(238, 238, 238);">https://github.com/zhangfangsong/Lara.git</code>下载源码，</p><p>国内网速慢的同学可以用码云地址：<code style="background-color: rgb(238, 238, 238); color: rgb(66, 152, 186);">https://gitee.com/zfs/Lara.git</code></p><pre class="ql-syntax" spellcheck="false">wwwroot root$ git clone&nbsp;https://github.com/zhangfangsong/Lara.git
+Initialized empty Git repository in /home/wwwroot/Lara/.git/
+remote: Counting objects: 5540, done.
+remote: Compressing objects: 100% (4025/4025), done.
+remote: Total 5540 (delta 1487), reused 5395 (delta 1342), pack-reused 0
+Receiving objects: 100% (5540/5540), 15.55 MiB | 22 KiB/s, done.
+Resolving deltas: 100% (1487/1487), done.
+</pre><p><br></p><p>2. 安装<code style="color: rgb(255, 255, 255); background-color: rgb(238, 238, 238);">composer</code>依赖</p><p>进入项目根目录，在命令行界面输入&nbsp;<code style="color: rgb(255, 255, 255); background-color: rgb(238, 238, 238);">composer install</code>&nbsp;安装项目依赖</p><pre class="ql-syntax" spellcheck="false">Lara root$ composer install
+Do not run Composer as root/super user! See&nbsp;https://getcomposer.org/root&nbsp;for details
+Loading composer repositories with package information
+Installing dependencies (including require-dev) from lock file
+Package operations: 95 installs, 0 updates, 0 removals
+&nbsp; - Installing symfony/thanks (v1.0.7): Loading from cache
+&nbsp; - Installing league/fractal (0.17.0): Loading from cache
+&nbsp; - Installing vlucas/phpdotenv (v2.4.0): Loading from cache
+&nbsp; - Installing symfony/css-selector (v4.1.0): Loading from cache
+&nbsp; - Installing tijsverkoyen/css-to-inline-styles (2.2.1): Loading from cache
+&nbsp; - Installing symfony/polyfill-mbstring (v1.8.0): Loading from cache
+&nbsp; - Installing symfony/var-dumper (v3.4.11): Loading from cache
+&nbsp; - Installing symfony/routing (v3.4.11): Loading from cache
+&nbsp; - Installing symfony/process (v3.4.11): Loading from cache
+&nbsp; - Installing symfony/polyfill-ctype (v1.8.0): Loading from cache
+&nbsp; // 省略...
+</pre><p><br></p><p>3. 配置<code style="color: rgb(255, 255, 255); background-color: rgb(238, 238, 238);">.env</code>文件</p><p>复制一份<code style="color: rgb(255, 255, 255); background-color: rgb(238, 238, 238);">.env.example</code>&nbsp;并重命名为<code style="color: rgb(255, 255, 255); background-color: rgb(238, 238, 238);">.env</code>&nbsp;编辑<code style="color: rgb(255, 255, 255); background-color: rgb(238, 238, 238);">.env</code>&nbsp;文件的以下部分为你的数据库连接配置</p><pre class="ql-syntax" spellcheck="false">Lara root$ cp .env.example .env
+Lara root$ vim .env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=数据库
+DB_USERNAME=用户名
+DB_PASSWORD=密&nbsp; 码
+</pre><p><br></p><p>4 设置应用秘钥</p><p>在命令行界面输入&nbsp;<code style="color: rgb(255, 255, 255); background-color: rgb(238, 238, 238);">php artisan key:generate &amp;&amp; php artisan jwt:secret</code></p><pre class="ql-syntax" spellcheck="false">Lara root$ php artisan key:generate &amp;&amp; php artisan jwt:secret
+Application key [base64:5lTTddEgdwVBiVlYaFJV1tPGbVWDDJAw4rw9trPrAY4=] set successfully.
+jwt-auth secret [RV4yuHhL8HVCDVL2FG2sFQ3ZLDqsCMSX] set successfully.
+</pre><p><code style="color: rgb(255, 255, 255); background-color: rgb(238, 238, 238);">php artisan key:generate</code>&nbsp;生成应用的加密密钥,确保用户会话和其他加密数据安全。</p><p><code style="color: rgb(255, 255, 255); background-color: rgb(238, 238, 238);">php artisan jwt:secret</code>&nbsp;用于<code style="color: rgb(255, 255, 255); background-color: rgb(238, 238, 238);">Api token</code>认证签名。</p><p><br></p><p>5. 数据库迁移</p><p>在命令行界面输入&nbsp;<code style="color: rgb(255, 255, 255); background-color: rgb(238, 238, 238);">php artisan migrate</code>&nbsp;运行数据库迁移文件，生成数据库表结构</p><pre class="ql-syntax" spellcheck="false">Lara root$ php artisan migrate
+Migration table created successfully.
+Migrating: 2014_10_12_000000_create_users_table
+Migrated:&nbsp; 2014_10_12_000000_create_users_table
+Migrating: 2018_05_11_024840_create_categories_table
+Migrated:&nbsp; 2018_05_11_024840_create_categories_table
+Migrating: 2018_05_11_040613_add_description_to_categories_table
+Migrated:&nbsp; 2018_05_11_040613_add_description_to_categories_table
+Migrating: 2018_05_12_155005_create_tags_table
+Migrated:&nbsp; 2018_05_12_155005_create_tags_table
+Migrating: 2018_05_13_052846_create_links_table
+Migrated:&nbsp; 2018_05_13_052846_create_links_table
+Migrating: 2018_05_14_064021_create_pages_table
+Migrated:&nbsp; 2018_05_14_064021_create_pages_table
+Migrating: 2018_05_15_023756_create_articles_table
+Migrated:&nbsp; 2018_05_15_023756_create_articles_table
+Migrating: 2018_05_23_020340_add_description_to_users_table
+Migrated:&nbsp; 2018_05_23_020340_add_description_to_users_table
+Migrating: 2018_05_23_060750_create_configs_table
+Migrated:&nbsp; 2018_05_23_060750_create_configs_table
+Migrating: 2018_05_24_055750_add_status_to_users_table
+Migrated:&nbsp; 2018_05_24_055750_add_status_to_users_table
+Migrating: 2018_05_24_113322_create_comments_table
+Migrated:&nbsp; 2018_05_24_113322_create_comments_table
+Migrating: 2018_05_25_082819_create_roles_table
+Migrated:&nbsp; 2018_05_25_082819_create_roles_table
+Migrating: 2018_05_28_015833_add_url_to_categories_table
+Migrated:&nbsp; 2018_05_28_015833_add_url_to_categories_table
+Migrating: 2018_05_28_081109_change_value_field_to_configs
+Migrated:&nbsp; 2018_05_28_081109_change_value_field_to_configs
+Migrating: 2018_06_13_035033_create_collections_table
+Migrated:&nbsp; 2018_06_13_035033_create_collections_table
+Migrating: 2018_07_15_032530_create_nodes_table
+Migrated:&nbsp; 2018_07_15_032530_create_nodes_table
+Migrating: 2018_07_15_034451_create_node_role_table
+Migrated:&nbsp; 2018_07_15_034451_create_node_role_table
+Migrating: 2018_07_15_063249_add_alias_to_nodes_table
+Migrated:&nbsp; 2018_07_15_063249_add_alias_to_nodes_table
+</pre><p><br></p><p>6. 数据库填充</p><p>在命令行界面输入&nbsp;<code style="color: rgb(255, 255, 255); background-color: rgb(238, 238, 238);">php artisan db:seed</code>&nbsp;填充默认数据</p><pre class="ql-syntax" spellcheck="false">Lara root$ php artisan db:seed
+Seeding: UsersTableSeeder
+Seeding: RolesTableSeeder
+Seeding: NodesTableSeeder
+Seeding: CategoriesTableSeeder
+Seeding: ArticlesTableSeeder
+Seeding: CommentsTableSeeder
+Seeding: LinksTableSeeder
+Seeding: TagsTableSeeder
+Seeding: ConfigsTableSeeder
+</pre><p><br></p><p>7. 配置权限</p><p>修改&nbsp;<code style="color: rgb(255, 255, 255); background-color: rgb(238, 238, 238);">storage</code>目录权限为&nbsp;<code style="color: rgb(255, 255, 255); background-color: rgb(238, 238, 238);">777</code></p><pre class="ql-syntax" spellcheck="false">Lara root$ chmod -R 777 storage
+</pre><p>至此，程序安装完毕，你就拥有了自己的博客<code style="color: rgb(255, 255, 255); background-color: rgb(238, 238, 238);">CMS</code>和一套<code style="color: rgb(255, 255, 255); background-color: rgb(238, 238, 238);">Api</code>服务器了。</p><p><br></p><p>网站前台：<code style="background-color: rgb(238, 238, 238); color: rgb(66, 152, 186);">http://demo.zfsphp.com</code></p><p>网站后台：<code style="background-color: rgb(238, 238, 238); color: rgb(66, 152, 186);">http://demo.zfsphp.com/admin</code></p><p>Api接口：&nbsp;&nbsp;<code style="background-color: rgb(238, 238, 238); color: rgb(66, 152, 186);">http://demo.zfsphp.com/api/v1/categories</code>&nbsp;（分类列表）</p><p><br></p><p>注：</p><p>1. 如果是在<code style="color: rgb(255, 255, 255); background-color: rgb(238, 238, 238);">nginx</code>环境，需要在<code style="color: rgb(255, 255, 255); background-color: rgb(238, 238, 238);">nginx</code>配置文件加上以下配置</p><pre class="ql-syntax" spellcheck="false">location / {
+&nbsp; &nbsp; try_files $uri $uri/ /index.php?$query_string;
+}
+</pre><p><br></p><p>2. 管理员初始账号，密码为&nbsp;<code style="color: rgb(255, 255, 255); background-color: rgb(238, 238, 238);">845573796@qq.com</code>&nbsp;和&nbsp;<code style="color: rgb(255, 255, 255); background-color: rgb(238, 238, 238);">secret</code>&nbsp;你也可以在命令行输入&nbsp;<code style="color: rgb(255, 255, 255); background-color: rgb(238, 238, 238);">php artisan reset:password</code>为相应的用户重置密码。</p><pre class="ql-syntax" spellcheck="false">Lara root$ php artisan reset:password
+&nbsp;请输入你想重置密码的用户ID:
+&nbsp;&gt; 1
+&nbsp;请输入用户密码:
+&nbsp;&gt;
+密码重置成功
+</pre><p><br></p><p>3. 默认开启了调试模式，你可以编辑<code style="color: rgb(255, 255, 255); background-color: rgb(238, 238, 238);">.env</code>文件，修改&nbsp;<code style="color: rgb(255, 255, 255); background-color: rgb(238, 238, 238);">APP_DEBUG</code>&nbsp;项为&nbsp;<code style="color: rgb(255, 255, 255); background-color: rgb(238, 238, 238);">false</code>即可。</p><p><br></p></div>
+		
+		<footer class="entry-meta">
+	发布于 <a href="../time/2019-09-05" title="2019-09-05" rel="bookmark"><time class="entry-date" datetime="2019-09-05">2019-09-05</time></a>。 属于 <a href="../cate/7" title="查看 Lara博客中的全部文章" rel="category">Lara博客</a> 分类，被贴了
+						<a href="../tag/Laravel" rel="tag">Laravel</a>
+								- <a href="../tag/博客" rel="tag">博客</a>
+								- <a href="../tag/博客系统" rel="tag">博客系统</a>
+			标签
+</footer>
+	</article>
+
+	<nav class="nav-single">
+		<div class="prev">上一篇：<a href="1">Lara博客系统v1.0版本发布</a></div>
+		<div class="prev">下一篇：没有了</div>
+	</nav>
+
+	<div id="comments" class="comments-area">
+					<h2 class="comments-title">《<span>Lara系统安装</span>》上有&nbsp;7&nbsp;条评论!</h2>
+			<ol class="commentlist" id="commentWraper">
+								<li class="comment even thread-even depth-0" id="li-comment-6">
+					<article id="comment-6" class="comment">
+						<header class="comment-meta comment-author vcard"><img src="../uploads/images/avatar/201909/1569501373.jpg" class="photo" height="44" width="44"/><cite class="fn">11 </cite><time datetime="">1个月前</time></header>
+						<section class="comment-content comment" style="margin-bottom:10px;line-height:25px;">&lt;script&gt;alert(&#039;你好哦&#039;)&lt;/script&gt;</section>
+					</article>
+				</li>
+								<li class="comment even thread-even depth-0" id="li-comment-6">
+					<article id="comment-6" class="comment">
+						<header class="comment-meta comment-author vcard"><img src="../uploads/images/avatar/201910/1570758640.jpg" class="photo" height="44" width="44"/><cite class="fn">kirds </cite><time datetime="">1个月前</time></header>
+						<section class="comment-content comment" style="margin-bottom:10px;line-height:25px;">好喜欢您博客的风格，好干净好清新。好喜欢这个配色</section>
+					</article>
+				</li>
+								<li class="comment even thread-even depth-0" id="li-comment-6">
+					<article id="comment-6" class="comment">
+						<header class="comment-meta comment-author vcard"><img src="../uploads/images/avatar/201910/1571020968.jpg" class="photo" height="44" width="44"/><cite class="fn">smallxio </cite><time datetime="">4周前</time></header>
+						<section class="comment-content comment" style="margin-bottom:10px;line-height:25px;">全网电影、电视剧、动漫、综艺免费看，请点击：movie.smallxio.com</section>
+					</article>
+				</li>
+								<li class="comment even thread-even depth-0" id="li-comment-6">
+					<article id="comment-6" class="comment">
+						<header class="comment-meta comment-author vcard"><img src="../uploads/images/avatar/201910/1571219995.jpg" class="photo" height="44" width="44"/><cite class="fn">15872998155 </cite><time datetime="">3周前</time></header>
+						<section class="comment-content comment" style="margin-bottom:10px;line-height:25px;">好文章</section>
+					</article>
+				</li>
+								<li class="comment even thread-even depth-0" id="li-comment-6">
+					<article id="comment-6" class="comment">
+						<header class="comment-meta comment-author vcard"><img src="../uploads/images/avatar/201910/1571219995.jpg" class="photo" height="44" width="44"/><cite class="fn">15872998155 </cite><time datetime="">3周前</time></header>
+						<section class="comment-content comment" style="margin-bottom:10px;line-height:25px;">&lt;script&gt;alert(&#039;你好哦&#039;)&lt;/script&gt;</section>
+					</article>
+				</li>
+								<li class="comment even thread-even depth-0" id="li-comment-6">
+					<article id="comment-6" class="comment">
+						<header class="comment-meta comment-author vcard"><img src="../uploads/images/link/201909/1567522249.jpg" class="photo" height="44" width="44"/><cite class="fn">admin </cite><time datetime="">2周前</time></header>
+						<section class="comment-content comment" style="margin-bottom:10px;line-height:25px;">谢谢🙏</section>
+					</article>
+				</li>
+								<li class="comment even thread-even depth-0" id="li-comment-6">
+					<article id="comment-6" class="comment">
+						<header class="comment-meta comment-author vcard"><img src="../uploads/images/avatar/201911/1573065981.jpg" class="photo" height="44" width="44"/><cite class="fn">花和尚 </cite><time datetime="">4天前</time></header>
+						<section class="comment-content comment" style="margin-bottom:10px;line-height:25px;">长见识了，很6</section>
+					</article>
+				</li>
+							</ol>
+				
+		<div id="respond">
+			<h3 id="reply-title">发表评论  <input type="submit" value="登录" onclick="location.href = 'http://www.zfsphp.com/login';"></h3>
+					</div>
+	</div>
+			</div>
+		</div>
+
+		<div id="secondary" class="widget-area" role="complementary">
+			<aside id="search-2" class="widget widget_search">
+				<form role="search" id="searchform" action="2" method="post">
+					<div>
+						<label class="screen-reader-text" for="s">搜索：</label>
+						<input placeholder="搜索" type="text" name="keywords" id="s"/>
+						<input type="submit" class="btn btn-default" id="searchsubmit" value="搜索" />
+					</div>
+				</form>
+
+				<script type="text/javascript">
+					$(function (){
+						$("#searchsubmit").click(function (){
+							location.href = "http://www.zfsphp.com" + "/search/"+$("#s").val()+'.html';
+							return false;
+						});
+					});
+				</script>
+			</aside>
+
+			<aside id="recent-posts-2" class="widget widget_recent_entries">
+				<h3 class="widget-title">热门文章</h3>
+				<ul>
+										<li><font style="color:#7a7a7a;">[0]</font>&nbsp;<a href="1" title="Lara博客系统v1.0版本发布">Lara博客系统v1.0版本发布</a></li>
+										<li><font style="color:#7a7a7a;">[1]</font>&nbsp;<a href="4" title="Linux输入输出重定向与管道">Linux输入输出重定向与管道</a></li>
+										<li><font style="color:#7a7a7a;">[2]</font>&nbsp;<a href="2" title="Lara系统安装">Lara系统安装</a></li>
+										<li><font style="color:#7a7a7a;">[3]</font>&nbsp;<a href="3" title="linux scp命令">linux scp命令</a></li>
+									</ul>
+			</aside>
+
+			<aside class="widget widget_recent_entries">
+				<h3 class="widget-title">最近更新</h3>
+				<ul>
+										<li><font style="color:#7a7a7a;">[0]</font>&nbsp;<a href="4" title="Linux输入输出重定向与管道">Linux输入输出重定向与管道</a></li>
+										<li><font style="color:#7a7a7a;">[1]</font>&nbsp;<a href="3" title="linux scp命令">linux scp命令</a></li>
+										<li><font style="color:#7a7a7a;">[2]</font>&nbsp;<a href="2" title="Lara系统安装">Lara系统安装</a></li>
+										<li><font style="color:#7a7a7a;">[3]</font>&nbsp;<a href="1" title="Lara博客系统v1.0版本发布">Lara博客系统v1.0版本发布</a></li>
+									</ul>
+			</aside>
+			
+			<aside id="archives-2" class="widget widget_archive">
+				<h3 class="widget-title">文章归档</h3>
+				<ul>
+											<li><a href="../time/2019-10" title="2019-10">2019年10月</a>&nbsp;<font style="color:#7a7a7a;">(2)</font></li>
+											<li><a href="../time/2019-09" title="2019-09">2019年09月</a>&nbsp;<font style="color:#7a7a7a;">(1)</font></li>
+											<li><a href="../time/2019-08" title="2019-08">2019年08月</a>&nbsp;<font style="color:#7a7a7a;">(1)</font></li>
+									</ul>
+			</aside>
+
+			<aside id="categories-2" class="widget widget_categories">
+				<h3 class="widget-title">分类目录</h3>
+				<ul>
+											<li class="cat-item cat-item-2"><a href="../cate/1" title="服务器">服务器</a></li>
+											<li class="cat-item cat-item-2"><a href="../cate/2" title="PHP语言">PHP语言</a></li>
+											<li class="cat-item cat-item-2"><a href="../cate/3" title="数据库">数据库</a></li>
+											<li class="cat-item cat-item-2"><a href="../cate/4" title="Linux">Linux</a></li>
+											<li class="cat-item cat-item-2"><a href="../cate/5" title="Javascript">Javascript</a></li>
+											<li class="cat-item cat-item-2"><a href="../cate/6" title="Html5 &amp; Css3">Html5 &amp; Css3</a></li>
+											<li class="cat-item cat-item-2"><a href="../cate/7" title="Lara博客">Lara博客</a></li>
+											<li class="cat-item cat-item-2"><a href="../cate/8" title="航拍摄影">航拍摄影</a></li>
+									</ul>
+			</aside>
+
+			<aside id="categories-2" class="widget widget_categories">
+				<h3 class="widget-title">热门标签</h3>
+				<ul>
+					<li class="cat-item cat-item-2">
+												<a href="../tag/linux" title="linux" style="font-size:12px;text-decoration:none;">linux</a> &nbsp;
+												<a href="../tag/管道" title="管道" style="font-size:12px;text-decoration:none;">管道</a> &nbsp;
+												<a href="../tag/scp" title="scp" style="font-size:12px;text-decoration:none;">scp</a> &nbsp;
+												<a href="../tag/博客" title="博客" style="font-size:12px;text-decoration:none;">博客</a> &nbsp;
+												<a href="../tag/重定向" title="重定向" style="font-size:12px;text-decoration:none;">重定向</a> &nbsp;
+												<a href="../tag/Laravel" title="Laravel" style="font-size:12px;text-decoration:none;">Laravel</a> &nbsp;
+												<a href="../tag/博客系统" title="博客系统" style="font-size:12px;text-decoration:none;">博客系统</a> &nbsp;
+											</li>
+				</ul>
+			</aside>
+		</div>
+	</div>
+
+	<footer id="colophon" role="contentinfo">
+		<div class="site-info">
+			<span>友情链接：</span>
+						<a href="../index.html" >张仿松博客</a>
+						<a href="http://lara.zfsphp.com" >Lara博客</a>
+					</div>
+	</footer>
+
+	<footer role="contentinfo" style="margin-top:0;">
+		<div class="site-info" style="text-align:center;">
+			<span>浙ICP备16000810号-2</span>
+			<span style="position:relative;top:2px;"><script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? "https://" : "http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1259945738'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s11.cnzz.com/z_stat.php%3Fid%3D1259945738%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script></span>
+		</div>
+	</footer>
+
+</div>
+
+</body>
+</html>

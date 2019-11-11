@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<!--[if IE 7]>
+<html class="ie ie7" lang="zh-CN">
+<![endif]-->
+<!--[if IE 8]>
+<html class="ie ie8" lang="zh-CN">
+<![endif]-->
+<!--[if !(IE 7) | !(IE 8)  ]><!-->
+<html lang="zh-CN">
+<!--<![endif]-->
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Linux输入输出重定向与管道 - Linux - 张仿松个人博客</title>
+	<meta name="keywords" content="博客,个人博客,张仿松个人博客,PHP,Laravel,Lara博客"/>
+	<meta name="description" content="张仿松个人博客是一个关注PHP技术的个人博客，提供一个互联网从业者的学习成果和工作经验总结。" />
+	<link rel="stylesheet" id="twentytwelve-style-css" href="../front/css/index.css" type="text/css" media="all" />
+	<!--[if lt IE 9]>
+	<link rel="stylesheet" id="twentytwelve-ie-css"  href="http://www.zfsphp.com/front/css/ie.css" type="text/css" media="all" />
+	<![endif]-->
+	<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>
+	<style type="text/css" id="custom-background-css">
+		body.custom-background {background-color: #e6e6e6; }
+	</style>
+
+	<!--[if lt IE 9]>
+	<script src="http://www.zfsphp.com/front/js/html5.js" type="text/javascript"></script>
+	<![endif]-->
+	<script type="text/javascript" src="../front/js/jquery.js"></script>
+	<script type="text/javascript" src="../front/js/nav.js"></script>
+</head>
+
+<body class="home blog custom-background custom-font-enabled single-author">
+
+<div id="page" class="hfeed site">
+
+	<header id="masthead" class="site-header" role="banner">
+		<hgroup>
+			<h1 class="site-title">
+				<a href="../index.html" title="张仿松个人博客" rel="home">张仿松个人博客</a>
+							</h1>
+			<h2 class="site-description">张仿松个人博客是一个关注PHP技术的个人博客，提供一个互联网从业者的学习成果和工作经验总结。</h2>
+		</hgroup>
+
+		<nav id="site-navigation" class="main-navigation" role="navigation">
+			<ul class="nav-menu">
+				<li><a href="../index.html">首页</a></li>
+								<li><a href="../cate/1">服务器</a>
+					<ul class="sub-menu">
+											</ul>
+				</li>
+								<li><a href="../cate/2">PHP语言</a>
+					<ul class="sub-menu">
+											</ul>
+				</li>
+								<li><a href="../cate/3">数据库</a>
+					<ul class="sub-menu">
+											</ul>
+				</li>
+								<li><a href="../cate/4">Linux</a>
+					<ul class="sub-menu">
+											</ul>
+				</li>
+								<li><a href="../cate/5">Javascript</a>
+					<ul class="sub-menu">
+											</ul>
+				</li>
+								<li><a href="../cate/6">Html5 &amp; Css3</a>
+					<ul class="sub-menu">
+											</ul>
+				</li>
+								<li><a href="../cate/7">Lara博客</a>
+					<ul class="sub-menu">
+											</ul>
+				</li>
+								<li><a href="../cate/8">航拍摄影</a>
+					<ul class="sub-menu">
+											</ul>
+				</li>
+							</ul>
+		</nav>
+	</header>
+
+	<div id="main" class="wrapper">
+		<div id="primary" class="site-content">
+			<div id="content" role="main">
+					<article>
+		<header class="entry-header">
+			<h1 class="entry-title"><a href="4" title="Linux输入输出重定向与管道" rel="bookmark">Linux输入输出重定向与管道</a></h1>
+		</header>
+
+		<div class="entry-content ql-editor"><p>在平时的运维工作中，会经常遇到linux重定向操作和管道符。linux重定向分为输入重定向和输出重定向。简言之，输入重定向就是将文件内容导入到命令中，而输出重定向则是将原本要输出到屏幕上的信息写入到指定的文件中。</p><p><br></p><p><strong>重定向</strong></p><p>标准输入重定向(<code style="background-color: rgb(238, 238, 238); color: rgb(255, 255, 255);">STDIN</code>,文件描述符为0)：默认从键盘输入，也可以从其他文件或命令输入</p><p>标准输出重定向(<code style="background-color: rgb(238, 238, 238); color: rgb(255, 255, 255);">STDOUT</code>,文件描述符为1)：默认输出到屏幕</p><p>标准错误重定向(<code style="background-color: rgb(238, 238, 238); color: rgb(255, 255, 255);">STDERR</code>,文件描述符为2)：默认输出到屏幕</p><p><br></p><p>输入重定向及其作用</p><p>命令 &lt; 文件 : 将文件作为命令的标准输入</p><p>命令 &lt;&lt; 分界符 : 从标准输入中读取，直到遇见分界符才终止</p><p>命令 &lt; 文件1 &gt; 文件2 : 将文件1作为命令的标准输入并将标准输出到文件2</p><p><br></p><p>输出重定向及其作用</p><p>命令 &gt; 文件 : 将标准输出重定向到文件中(清空原有文件的数据)</p><p>命令 &gt;&gt; 文件 : 将标准输出重定向到文件中(追加到原有的文件中)</p><p>命令 2&gt; 文件 : 将标准错误重定向到一个文件中(清空原有文件的数据)</p><p>命令 2&gt;&gt; 文件 : 将标准错误重定向到一个文件中(追加到原有文件中)</p><p>命令 &gt;&gt; 文件 2&gt;&amp;1 或 命令 &amp;&gt;&gt; 文件 : 将标准输出和标准错误重定向到文件中(追加到原有文件中)</p><pre class="ql-syntax" spellcheck="false">[root@linux ~]# ls -l &gt; ls.txt
+[root@linux ~]# cat ls.txt 
+总用量 581856
+-rw-r--r--.&nbsp; 1 root&nbsp; root&nbsp; 587202560 1月&nbsp;&nbsp; 5 22:47 560_file
+drwxr-xr-x.&nbsp; 2 root&nbsp; root&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 6 1月&nbsp; 20 22:20 Desktop
+-rw-r--r--.&nbsp; 1 root&nbsp; root&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 19 1月&nbsp;&nbsp; 5 22:36 diff_a.txt
+-rw-r--r--.&nbsp; 1 root&nbsp; root&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 19 1月&nbsp;&nbsp; 5 22:37 diff_b.txt
+drwxr-xr-x.&nbsp; 2 root&nbsp; root&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 6 1月&nbsp;&nbsp; 5 21:53 Documents
+drwxr-xr-x.&nbsp; 2 root&nbsp; root&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 6 1月&nbsp;&nbsp; 5 21:53 Downloads
+drwxr-xr-x.&nbsp; 3 root&nbsp; root&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 16 1月&nbsp;&nbsp; 5 22:52 etc
+-rw-r--r--.&nbsp; 1 root&nbsp; root&nbsp;&nbsp;&nbsp; 8596360 1月&nbsp;&nbsp; 5 22:50 etc.tar.gz
+drwx------. 57 linux linux&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 4096 1月&nbsp;&nbsp; 5 22:57 findresults
+-rw-r--r--.&nbsp; 1 root&nbsp; root&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0 1月&nbsp; 20 22:33 linuxprobe
+-rw-r--r--.&nbsp; 1 root&nbsp; root&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 0 1月&nbsp; 20 23:39 ls.txt
+drwxr-xr-x.&nbsp; 2 root&nbsp; root&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 6 1月&nbsp;&nbsp; 5 21:53 Music
+drwxr-xr-x.&nbsp; 2 root&nbsp; root&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 6 1月&nbsp;&nbsp; 5 21:53 Pictures
+drwxr-xr-x.&nbsp; 2 root&nbsp; root&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 6 1月&nbsp;&nbsp; 5 21:53 Public
+-rw-r--r--.&nbsp; 1 root&nbsp; root&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 55 1月&nbsp; 20 22:36 readme.txt
+-rw-r--r--.&nbsp; 1 root&nbsp; root&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 50 1月&nbsp; 20 22:39 stderr.txt
+drwxr-xr-x.&nbsp; 2 root&nbsp; root&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 6 1月&nbsp;&nbsp; 5 21:53 Templates
+drwxr-xr-x.&nbsp; 2 root&nbsp; root&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 6 1月&nbsp;&nbsp; 5 21:53 Videos
+</pre><p><code style="background-color: rgb(238, 238, 238); color: rgb(255, 255, 255);">ls -l &gt; ls.txt</code>&nbsp;将<code style="background-color: rgb(238, 238, 238); color: rgb(255, 255, 255);">ls</code>命令的标准输出重定向到文件中,并且是以覆盖的方式,这样会清空<code style="background-color: rgb(238, 238, 238); color: rgb(255, 255, 255);">ls.txt</code>原有的内容。</p><pre class="ql-syntax" spellcheck="false">[root@linux ~]# echo 'welcome to beijing' &gt; ls.txt 
+[root@linux ~]# echo 'welcome to hangzhou' &gt;&gt; ls.txt 
+[root@linux ~]# cat ls.txt 
+welcome to beijing
+welcome to hangzhou
+</pre><p><code style="background-color: rgb(238, 238, 238); color: rgb(255, 255, 255);">echo 'welcome to beijing' &gt; ls.txt</code>以覆盖的方式将命令的标准输出重定向到文件<code style="background-color: rgb(238, 238, 238); color: rgb(255, 255, 255);">ls.txt</code>可见<code style="background-color: rgb(238, 238, 238); color: rgb(255, 255, 255);">ls.txt</code>文件原有的内容被清除了。</p><p><code style="background-color: rgb(238, 238, 238); color: rgb(255, 255, 255);">echo 'welcome to hangzhou' &gt;&gt; ls.txt</code>以追加的方式将命令的标准输出重定向到文件<code style="background-color: rgb(238, 238, 238); color: rgb(255, 255, 255);">ls.txt</code>可见<code style="background-color: rgb(238, 238, 238); color: rgb(255, 255, 255);">ls.txt</code>文件原有的内容被保留了。</p><pre class="ql-syntax" spellcheck="false">[root@linux ~]# ls -l xxxxxx
+ls: 无法访问xxxxxx: 没有那个文件或目录
+[root@linux ~]# ls -l xxxxxx 2&gt; error.txt
+[root@linux ~]# cat error.txt 
+ls: 无法访问xxxxxx: 没有那个文件或目录
+</pre><p><code style="background-color: rgb(238, 238, 238); color: rgb(255, 255, 255);">ls -l xxxxxx 2&gt; error.txt</code>&nbsp;将命令的标准错误重定向到文件<code style="background-color: rgb(238, 238, 238); color: rgb(255, 255, 255);">error.txt</code>文件中。这时本应该显示在屏幕上的错误信息会重定向到文件<code style="background-color: rgb(238, 238, 238); color: rgb(255, 255, 255);">error.txt</code>中。</p><p><br></p><p><strong>管道</strong></p><p>管道的作用简言之就是将上一个命令的输出作为下一个命令的输入，格式为&nbsp;<code style="background-color: rgb(238, 238, 238); color: rgb(255, 255, 255);">"命令A | 命令B | 命令C"</code></p><p><br></p><p>统计系统中的用户数</p><pre class="ql-syntax" spellcheck="false">[root@linux ~]# cat /etc/passwd | wc -l
+38
+</pre><p>将<code style="background-color: rgb(238, 238, 238); color: rgb(255, 255, 255);">cat</code>命令的输出作为<code style="background-color: rgb(238, 238, 238); color: rgb(255, 255, 255);">wc</code>命令的输入,然后得到<code style="background-color: rgb(238, 238, 238); color: rgb(255, 255, 255);">/etc/passwd</code>文件的行数，效果等价于<code style="background-color: rgb(238, 238, 238); color: rgb(255, 255, 255);">wc -l &lt; /etc/passwd</code></p><p><br></p><p>统计系统中不能登录的用户数</p><pre class="ql-syntax" spellcheck="false">[root@linux ~]# cat /etc/passwd | grep "/sbin/nologin" | wc -l
+33
+</pre><p>在<code style="background-color: rgb(238, 238, 238); color: rgb(255, 255, 255);">cat</code>命令的输出中查找包含<code style="background-color: rgb(238, 238, 238); color: rgb(255, 255, 255);">"/sbin/nologin"</code>的行,并将其作为<code style="background-color: rgb(238, 238, 238); color: rgb(255, 255, 255);">wc</code>命令的输入，得到的就是系统在被限制登录的用户数。</p></div>
+		
+		<footer class="entry-meta">
+	发布于 <a href="../time/2019-10-16" title="2019-10-16" rel="bookmark"><time class="entry-date" datetime="2019-10-16">2019-10-16</time></a>。 属于 <a href="../cate/4" title="查看 Linux中的全部文章" rel="category">Linux</a> 分类，被贴了
+						<a href="../tag/Linux" rel="tag">Linux</a>
+								- <a href="../tag/重定向" rel="tag">重定向</a>
+								- <a href="../tag/管道" rel="tag">管道</a>
+			标签
+</footer>
+	</article>
+
+	<nav class="nav-single">
+		<div class="prev">上一篇：<a href="3">linux scp命令</a></div>
+		<div class="prev">下一篇：没有了</div>
+	</nav>
+
+	<div id="comments" class="comments-area">
+					<h2 class="comments-title">《<span>Linux输入输出重定向与管道</span>》上有&nbsp;6&nbsp;条评论!</h2>
+			<ol class="commentlist" id="commentWraper">
+								<li class="comment even thread-even depth-0" id="li-comment-6">
+					<article id="comment-6" class="comment">
+						<header class="comment-meta comment-author vcard"><img src="../uploads/images/avatar/201910/1571305917.jpg" class="photo" height="44" width="44"/><cite class="fn">kai45666 </cite><time datetime="">3周前</time></header>
+						<section class="comment-content comment" style="margin-bottom:10px;line-height:25px;">11111</section>
+					</article>
+				</li>
+								<li class="comment even thread-even depth-0" id="li-comment-6">
+					<article id="comment-6" class="comment">
+						<header class="comment-meta comment-author vcard"><img src="../uploads/images/avatar/201910/1571793320.jpg" class="photo" height="44" width="44"/><cite class="fn">chenchen123 </cite><time datetime="">2周前</time></header>
+						<section class="comment-content comment" style="margin-bottom:10px;line-height:25px;">666</section>
+					</article>
+				</li>
+								<li class="comment even thread-even depth-0" id="li-comment-6">
+					<article id="comment-6" class="comment">
+						<header class="comment-meta comment-author vcard"><img src="../uploads/images/avatar/201910/1572080801.jpg" class="photo" height="44" width="44"/><cite class="fn">ruhaozhang </cite><time datetime="">2周前</time></header>
+						<section class="comment-content comment" style="margin-bottom:10px;line-height:25px;">666</section>
+					</article>
+				</li>
+								<li class="comment even thread-even depth-0" id="li-comment-6">
+					<article id="comment-6" class="comment">
+						<header class="comment-meta comment-author vcard"><img src="../uploads/images/avatar/201910/1570435714.jpg" class="photo" height="44" width="44"/><cite class="fn">1 </cite><time datetime="">2周前</time></header>
+						<section class="comment-content comment" style="margin-bottom:10px;line-height:25px;">666</section>
+					</article>
+				</li>
+								<li class="comment even thread-even depth-0" id="li-comment-6">
+					<article id="comment-6" class="comment">
+						<header class="comment-meta comment-author vcard"><img src="../uploads/images/avatar/201910/1572080801.jpg" class="photo" height="44" width="44"/><cite class="fn">ruhaozhang </cite><time datetime="">1周前</time></header>
+						<section class="comment-content comment" style="margin-bottom:10px;line-height:25px;">好棒啊</section>
+					</article>
+				</li>
+								<li class="comment even thread-even depth-0" id="li-comment-6">
+					<article id="comment-6" class="comment">
+						<header class="comment-meta comment-author vcard"><img src="../uploads/images/avatar/201911/1573177656.jpg" class="photo" height="44" width="44"/><cite class="fn">yyyyyyyy </cite><time datetime="">3天前</time></header>
+						<section class="comment-content comment" style="margin-bottom:10px;line-height:25px;">えですねｓｄｆ</section>
+					</article>
+				</li>
+							</ol>
+				
+		<div id="respond">
+			<h3 id="reply-title">发表评论  <input type="submit" value="登录" onclick="location.href = 'http://www.zfsphp.com/login';"></h3>
+					</div>
+	</div>
+			</div>
+		</div>
+
+		<div id="secondary" class="widget-area" role="complementary">
+			<aside id="search-2" class="widget widget_search">
+				<form role="search" id="searchform" action="4" method="post">
+					<div>
+						<label class="screen-reader-text" for="s">搜索：</label>
+						<input placeholder="搜索" type="text" name="keywords" id="s"/>
+						<input type="submit" class="btn btn-default" id="searchsubmit" value="搜索" />
+					</div>
+				</form>
+
+				<script type="text/javascript">
+					$(function (){
+						$("#searchsubmit").click(function (){
+							location.href = "http://www.zfsphp.com" + "/search/"+$("#s").val()+'.html';
+							return false;
+						});
+					});
+				</script>
+			</aside>
+
+			<aside id="recent-posts-2" class="widget widget_recent_entries">
+				<h3 class="widget-title">热门文章</h3>
+				<ul>
+										<li><font style="color:#7a7a7a;">[0]</font>&nbsp;<a href="1" title="Lara博客系统v1.0版本发布">Lara博客系统v1.0版本发布</a></li>
+										<li><font style="color:#7a7a7a;">[1]</font>&nbsp;<a href="4" title="Linux输入输出重定向与管道">Linux输入输出重定向与管道</a></li>
+										<li><font style="color:#7a7a7a;">[2]</font>&nbsp;<a href="2" title="Lara系统安装">Lara系统安装</a></li>
+										<li><font style="color:#7a7a7a;">[3]</font>&nbsp;<a href="3" title="linux scp命令">linux scp命令</a></li>
+									</ul>
+			</aside>
+
+			<aside class="widget widget_recent_entries">
+				<h3 class="widget-title">最近更新</h3>
+				<ul>
+										<li><font style="color:#7a7a7a;">[0]</font>&nbsp;<a href="4" title="Linux输入输出重定向与管道">Linux输入输出重定向与管道</a></li>
+										<li><font style="color:#7a7a7a;">[1]</font>&nbsp;<a href="3" title="linux scp命令">linux scp命令</a></li>
+										<li><font style="color:#7a7a7a;">[2]</font>&nbsp;<a href="2" title="Lara系统安装">Lara系统安装</a></li>
+										<li><font style="color:#7a7a7a;">[3]</font>&nbsp;<a href="1" title="Lara博客系统v1.0版本发布">Lara博客系统v1.0版本发布</a></li>
+									</ul>
+			</aside>
+			
+			<aside id="archives-2" class="widget widget_archive">
+				<h3 class="widget-title">文章归档</h3>
+				<ul>
+											<li><a href="../time/2019-10" title="2019-10">2019年10月</a>&nbsp;<font style="color:#7a7a7a;">(2)</font></li>
+											<li><a href="../time/2019-09" title="2019-09">2019年09月</a>&nbsp;<font style="color:#7a7a7a;">(1)</font></li>
+											<li><a href="../time/2019-08" title="2019-08">2019年08月</a>&nbsp;<font style="color:#7a7a7a;">(1)</font></li>
+									</ul>
+			</aside>
+
+			<aside id="categories-2" class="widget widget_categories">
+				<h3 class="widget-title">分类目录</h3>
+				<ul>
+											<li class="cat-item cat-item-2"><a href="../cate/1" title="服务器">服务器</a></li>
+											<li class="cat-item cat-item-2"><a href="../cate/2" title="PHP语言">PHP语言</a></li>
+											<li class="cat-item cat-item-2"><a href="../cate/3" title="数据库">数据库</a></li>
+											<li class="cat-item cat-item-2"><a href="../cate/4" title="Linux">Linux</a></li>
+											<li class="cat-item cat-item-2"><a href="../cate/5" title="Javascript">Javascript</a></li>
+											<li class="cat-item cat-item-2"><a href="../cate/6" title="Html5 &amp; Css3">Html5 &amp; Css3</a></li>
+											<li class="cat-item cat-item-2"><a href="../cate/7" title="Lara博客">Lara博客</a></li>
+											<li class="cat-item cat-item-2"><a href="../cate/8" title="航拍摄影">航拍摄影</a></li>
+									</ul>
+			</aside>
+
+			<aside id="categories-2" class="widget widget_categories">
+				<h3 class="widget-title">热门标签</h3>
+				<ul>
+					<li class="cat-item cat-item-2">
+												<a href="../tag/博客系统" title="博客系统" style="font-size:12px;text-decoration:none;">博客系统</a> &nbsp;
+												<a href="../tag/Laravel" title="Laravel" style="font-size:12px;text-decoration:none;">Laravel</a> &nbsp;
+												<a href="../tag/重定向" title="重定向" style="font-size:12px;text-decoration:none;">重定向</a> &nbsp;
+												<a href="../tag/管道" title="管道" style="font-size:12px;text-decoration:none;">管道</a> &nbsp;
+												<a href="../tag/linux" title="linux" style="font-size:12px;text-decoration:none;">linux</a> &nbsp;
+												<a href="../tag/博客" title="博客" style="font-size:12px;text-decoration:none;">博客</a> &nbsp;
+												<a href="../tag/scp" title="scp" style="font-size:12px;text-decoration:none;">scp</a> &nbsp;
+											</li>
+				</ul>
+			</aside>
+		</div>
+	</div>
+
+	<footer id="colophon" role="contentinfo">
+		<div class="site-info">
+			<span>友情链接：</span>
+						<a href="../index.html" >张仿松博客</a>
+						<a href="http://lara.zfsphp.com" >Lara博客</a>
+					</div>
+	</footer>
+
+	<footer role="contentinfo" style="margin-top:0;">
+		<div class="site-info" style="text-align:center;">
+			<span>浙ICP备16000810号-2</span>
+			<span style="position:relative;top:2px;"><script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? "https://" : "http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1259945738'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s11.cnzz.com/z_stat.php%3Fid%3D1259945738%26show%3Dpic' type='text/javascript'%3E%3C/script%3E"));</script></span>
+		</div>
+	</footer>
+
+</div>
+
+</body>
+</html>
